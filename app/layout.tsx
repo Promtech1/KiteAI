@@ -7,9 +7,12 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Kite AI Quiz Challenge",
-  description: "Test your knowledge with the futuristic Kite AI Quiz Challenge",
+  title: "Kite Quest",
+  description: "Test your knowledge with the Kite blockchain quiz",
   generator: "v0.app",
+  icons: {
+    icon: "/favicon.ico",
+  },
 }
 
 export default function RootLayout({

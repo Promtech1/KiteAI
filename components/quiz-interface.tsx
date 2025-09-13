@@ -76,33 +76,33 @@ export function QuizInterface({ quizData, onAnswer, onNext, onPrevious, onFinish
         </div>
 
         {/* Question Card */}
-        <Card className="p-8 border-border/50 bg-card/95 backdrop-blur-sm">
-          <div className="space-y-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-center text-balance leading-tight">
+        <Card className="p-4 md:p-8 border-border/50 bg-card/95 backdrop-blur-sm">
+          <div className="space-y-6 md:space-y-8">
+            <h2 className="text-lg md:text-2xl lg:text-3xl font-bold text-center text-balance leading-tight">
               {currentQuestion.question}
             </h2>
 
-            <div className="grid gap-4">
+            <div className="grid gap-3 md:gap-4">
               {currentQuestion.options.map((option, index) => (
                 <Button
                   key={index}
                   onClick={() => onAnswer(index)}
                   variant={selectedAnswer === index ? "default" : "outline"}
                   size="lg"
-                  className={`p-6 text-left justify-start text-lg border-2 transition-all duration-300 ${
+                  className={`p-3 md:p-6 text-left justify-start text-sm md:text-lg border-2 transition-all duration-300 min-h-[60px] md:min-h-[80px] ${
                     selectedAnswer === index
                       ? "border-primary bg-primary text-primary-foreground"
                       : "border-border hover:border-primary hover:bg-primary/10 hover:text-primary"
                   }`}
                 >
                   <span
-                    className={`w-8 h-8 rounded-full font-bold flex items-center justify-center mr-4 flex-shrink-0 ${
+                    className={`w-6 h-6 md:w-8 md:h-8 rounded-full font-bold flex items-center justify-center mr-3 md:mr-4 flex-shrink-0 text-xs md:text-base ${
                       selectedAnswer === index ? "bg-primary-foreground text-primary" : "bg-primary/20 text-primary"
                     }`}
                   >
                     {String.fromCharCode(65 + index)}
                   </span>
-                  <span className="text-pretty">{option}</span>
+                  <span className="text-pretty leading-relaxed">{option}</span>
                 </Button>
               ))}
             </div>
@@ -115,10 +115,11 @@ export function QuizInterface({ quizData, onAnswer, onNext, onPrevious, onFinish
             disabled={!canGoPrevious}
             variant="outline"
             size="lg"
-            className="flex items-center space-x-2 bg-transparent"
+            className="flex items-center space-x-2 bg-transparent text-sm md:text-base px-3 md:px-6"
           >
             <ChevronLeft className="w-4 h-4" />
-            <span>Previous</span>
+            <span className="hidden sm:inline">Previous</span>
+            <span className="sm:hidden">Prev</span>
           </Button>
 
           <div className="flex items-center space-x-4">
@@ -127,7 +128,7 @@ export function QuizInterface({ quizData, onAnswer, onNext, onPrevious, onFinish
                 onClick={onNext}
                 disabled={selectedAnswer === null}
                 size="lg"
-                className="flex items-center space-x-2 bg-primary hover:bg-primary/90"
+                className="flex items-center space-x-2 bg-primary hover:bg-primary/90 text-sm md:text-base px-3 md:px-6"
               >
                 <span>Next</span>
                 <ChevronRight className="w-4 h-4" />
@@ -137,10 +138,11 @@ export function QuizInterface({ quizData, onAnswer, onNext, onPrevious, onFinish
                 onClick={onFinish}
                 disabled={!allQuestionsAnswered}
                 size="lg"
-                className="flex items-center space-x-2 bg-accent hover:bg-accent/90 text-accent-foreground"
+                className="flex items-center space-x-2 bg-accent hover:bg-accent/90 text-accent-foreground text-sm md:text-base px-3 md:px-6"
               >
                 <Flag className="w-4 h-4" />
-                <span>Finish Quiz</span>
+                <span className="hidden sm:inline">Finish Quiz</span>
+                <span className="sm:hidden">Finish</span>
               </Button>
             )}
           </div>
