@@ -82,27 +82,29 @@ export function QuizInterface({ quizData, onAnswer, onNext, onPrevious, onFinish
               {currentQuestion.question}
             </h2>
 
-            <div className="grid gap-3 md:gap-4">
+            <div className="grid gap-4 md:gap-4">
               {currentQuestion.options.map((option, index) => (
                 <Button
                   key={index}
                   onClick={() => onAnswer(index)}
                   variant={selectedAnswer === index ? "default" : "outline"}
                   size="lg"
-                  className={`p-3 md:p-6 text-left justify-start text-sm md:text-lg border-2 transition-all duration-300 min-h-[60px] md:min-h-[80px] ${
+                  className={`p-4 md:p-6 text-left justify-start text-sm md:text-base border-2 transition-all duration-300 min-h-[70px] md:min-h-[80px] w-full ${
                     selectedAnswer === index
                       ? "border-primary bg-primary text-primary-foreground"
                       : "border-border hover:border-primary hover:bg-primary/10 hover:text-primary"
                   }`}
                 >
-                  <span
-                    className={`w-6 h-6 md:w-8 md:h-8 rounded-full font-bold flex items-center justify-center mr-3 md:mr-4 flex-shrink-0 text-xs md:text-base ${
-                      selectedAnswer === index ? "bg-primary-foreground text-primary" : "bg-primary/20 text-primary"
-                    }`}
-                  >
-                    {String.fromCharCode(65 + index)}
-                  </span>
-                  <span className="text-pretty leading-relaxed">{option}</span>
+                  <div className="flex items-start space-x-3 md:space-x-4 w-full">
+                    <span
+                      className={`w-6 h-6 md:w-8 md:h-8 rounded-full font-bold flex items-center justify-center flex-shrink-0 text-xs md:text-base mt-0.5 ${
+                        selectedAnswer === index ? "bg-primary-foreground text-primary" : "bg-primary/20 text-primary"
+                      }`}
+                    >
+                      {String.fromCharCode(65 + index)}
+                    </span>
+                    <span className="text-pretty leading-relaxed break-words flex-1 text-left">{option}</span>
+                  </div>
                 </Button>
               ))}
             </div>
